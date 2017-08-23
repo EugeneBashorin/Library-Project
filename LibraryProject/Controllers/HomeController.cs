@@ -160,12 +160,12 @@ namespace LibraryProject.Controllers
             saver = new SaveService();
             listData = new StringBuilder(130);
             List<PrintEdition> bookList = (List<PrintEdition>)Session["PrintEdition"];
-            List<Book> selectList = new List<Book>();
+            List<IBookAble> selectList = new List<IBookAble>();
             foreach (var item in bookList)
             {            
                 if (item is IBookAble)
                 {
-                    var book = (Book)item;
+                    var book = (IBookAble)item;
                     selectList.Add(book);
                 }
             }
