@@ -1,0 +1,87 @@
+﻿@using LibraryProject.Models;
+@model List<PrintEdition>
+@{
+    ViewBag.Title = "Library";
+}
+
+<h3>List of books</h3>
+<table>
+    <thead>
+        <tr>
+            <th align="left">Name</th>
+            <th align="left">Author</th>
+            <th align="left">Publisher</th>
+            <th align="left">Price</th>
+        </tr>
+    </thead>
+    <tbody>        
+        @foreach (var item in Model)
+        {
+            if (item is Book)
+            {
+                var book = (Book)item;
+            <tr>
+                <td align="left">@book.Name</td>
+                <td align="left">@book.Author</td>
+                <td align="left">@book.Publisher</td>
+                <td align="center">@book.Price.ToString("c")</td>
+            </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" align="left"><p>@Html.ActionLink("Save a List of books", "GetList",new { },new { id = "button"})</p></td>
+        </tr>
+    </tfoot>
+</table>
+
+<h3>List of magazines</h3>
+<table>
+    <thead>
+        <tr>
+            <th align="left">Name</th>
+            <th align="left">Category</th>
+            <th align="left">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item is Magazine)
+            {
+                var magazine = (Magazine)item;
+                <tr>
+                    <td align="left">@magazine.Name</td>
+                    <td align="left">@magazine.Category</td>
+                    <td align="center">@magazine.Price.ToString("c")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<h3>List of News paper</h3>
+<table>
+        <thead>
+            <tr>
+                <th align="left">Name</th>
+                <th align="left">Category</th>
+                <th align="left">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item is NewsPaper)
+                {
+                    var newsPaper = (NewsPaper)item;
+                    <tr>
+                        <td align="left">@newsPaper.Name</td>
+                        <td align="left">@newsPaper.Category</td>
+                        <td align="center">@newsPaper.Price.ToString("c")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
