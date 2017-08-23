@@ -1,4 +1,5 @@
-﻿using LibraryProject.Models;
+﻿using LibraryProject.Interfaces;
+using LibraryProject.Models;
 using LibraryProject.Service;
 using System.Collections.Generic;
 using System.Text;
@@ -162,7 +163,7 @@ namespace LibraryProject.Controllers
             List<Book> selectList = new List<Book>();
             foreach (var item in bookList)
             {            
-                if (item is Book)
+                if (item is IBookAble)
                 {
                     var book = (Book)item;
                     selectList.Add(book);

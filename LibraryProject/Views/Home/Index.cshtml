@@ -1,4 +1,6 @@
 ﻿@using LibraryProject.Models;
+@using LibraryProject.Interfaces;
+
 @model List<PrintEdition>
 @{
     ViewBag.Title = "Library";
@@ -17,9 +19,9 @@
     <tbody>        
         @foreach (var item in Model)
         {
-            if (item is Book)
+            if (item is IBookAble)
             {
-                var book = (Book)item;
+                var book = (IBookAble)item;
             <tr>
                 <td align="left">@book.Name</td>
                 <td align="left">@book.Author</td>
@@ -48,9 +50,9 @@
     <tbody>
         @foreach (var item in Model)
         {
-            if (item is Magazine)
+            if (item is IMagazineAble)
             {
-                var magazine = (Magazine)item;
+                var magazine = (IMagazineAble)item;
                 <tr>
                     <td align="left">@magazine.Name</td>
                     <td align="left">@magazine.Category</td>
@@ -73,9 +75,9 @@
         <tbody>
             @foreach (var item in Model)
             {
-                if (item is NewsPaper)
+                if (item is INewspaperAble)
                 {
-                    var newsPaper = (NewsPaper)item;
+                    var newsPaper = (INewspaperAble)item;
                     <tr>
                         <td align="left">@newsPaper.Name</td>
                         <td align="left">@newsPaper.Category</td>
