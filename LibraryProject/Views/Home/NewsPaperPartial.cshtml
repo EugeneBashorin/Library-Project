@@ -1,0 +1,51 @@
+﻿@using LibraryProject.Models;
+@model List<NewsPaper>
+
+<table class="table">
+    <tr>
+        <th align="left">
+            Name
+        </th>
+        <th align="left">
+            Category
+        </th>
+        <th align="left">
+            Publisher
+        </th>
+        <th align="left">
+            Price
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td align="left">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+    }
+    <tr>
+        <td align="left">
+            @Html.ActionLink("Save txt list", "GetNewsPapersList", new { }, new { @class = "button button-saver" })
+        </td>
+    </tr>
+</table>
+
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.TextBox("publisherName", Session["PublisherName"], new {size = "5" })
+        <input type="submit" formaction="/Home/GetPublisherList/newspaper" class="button" value="Sort by publishers" />
+        <input type="submit" formaction="/Home/GetAllPublisher/newspaper" class="button" value="Get all publishers" />
+    }
+</div>

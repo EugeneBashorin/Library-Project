@@ -1,8 +1,9 @@
-﻿using LibraryProject.Interfaces;
+﻿using System;
 
 namespace LibraryProject.Models
 {
-    public class NewsPaper : PrintEdition, INewspaperAble
+    [Serializable]
+    public class NewsPaper : PrintEdition
     {
         public string Category { get; set; }
     }

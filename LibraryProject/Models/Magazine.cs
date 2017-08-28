@@ -1,8 +1,6 @@
-﻿using LibraryProject.Interfaces;
-
-namespace LibraryProject.Models
+﻿namespace LibraryProject.Models
 {
-    public class Magazine : PrintEdition, IMagazineAble
+    public class Magazine : PrintEdition
     {
         public string Category { get; set; }
     }

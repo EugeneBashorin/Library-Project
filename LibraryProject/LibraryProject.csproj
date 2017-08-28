@@ -124,13 +124,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Interfaces\IBookAble.cs" />
-    <Compile Include="Interfaces\IMagazineAble.cs" />
-    <Compile Include="Interfaces\INewspaperAble.cs" />
+    <Compile Include="Extention Classes\BookExtention.cs" />
+    <Compile Include="Extention Classes\NewsPaperExtention.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\Magazine.cs" />
     <Compile Include="Models\NewsPaper.cs" />
     <Compile Include="Models\PrintEdition.cs" />
@@ -147,6 +147,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\BookPartial.cshtml" />
+    <Content Include="Views\Home\MagazinePartial.cshtml" />
+    <Content Include="Views\Home\NewsPaperPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
