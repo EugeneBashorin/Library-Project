@@ -2,6 +2,7 @@
 using LibraryProject.Models;
 using LibraryProject.Service;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace LibraryProject.Controllers
@@ -11,6 +12,8 @@ namespace LibraryProject.Controllers
         private const string _BOOK_KEY = "book";
         private const string _MAGAZINE_KEY = "magazine";
         private const string _NEWSPAPER_KEY = "newspaper";
+        private const int _AUTOINCREMENT = 1;
+
         List<Book> bookList;
         List<Magazine> magazineList;
         List<NewsPaper> newsPaperList;
@@ -26,41 +29,41 @@ namespace LibraryProject.Controllers
                 magazineList = new List<Magazine>();
                 newsPaperList = new List<NewsPaper>();
 
-                bookList.AddRange(new List<Book> { new Book { Name = "Head First C#", Author = "A.Stellman,J.Greene", Publisher = "O'Reilly", Price = 540 },
-                    new Book{Name = "LINQ Succinctly", Author = "J.Roberts", Publisher = "Syncfusion", Price = 200},
-                    new Book{Name = "Java Script Patterns", Author = "S.Stefanov", Publisher = "O'Reilly", Price = 312 },
-                    new Book{Name = "Head First JS Programming", Author = "E.Freeman,E.Robson", Publisher = "O'Reilly", Price = 330 },
-                    new Book{Name = "SQL The Complete Reference", Author = "J.Groff,P.Weinberg,A.Oppel", Publisher = "Williams", Price = 158 },
-                    new Book{Name = "Getting started with ASP.NET 5.0 Web Forms", Author = "N.Gaylord,Ch.Wenz,P.Rastogi,T.Miranda", Publisher = "O'Reilly", Price = 400 },
-                    new Book{Name = "C# 6.0 Complete Guide", Author = "J. & B.Albahairy", Publisher = "Williams", Price = 499 },
-                    new Book{Name = "ASP.NET 4.5 in C# and VB", Author = "J.Gaylord", Publisher = "Wrox", Price = 274 },
-                    new Book{Name = "Head First SQL", Author = "Lynn Beighley", Publisher = "O'Reilly", Price = 299 },
-                    new Book{Name = "Design Patterns via C#", Author = "A.Shevchyk,A.Kasianov,D.Ohrimenko", Publisher = "ITVDN", Price = 830 },
-                    new Book{Name = "OOP in C#. Succinctly", Author = "S.Rossel", Publisher = "Syncfusion", Price = 830 }
+                bookList.AddRange(new List<Book> { new Book { Name = "Head First C#", Author = "A.Stellman,J.Greene", Publisher = "O'Reilly", Price = 540, Id = 1 },
+                    new Book{Name = "LINQ Succinctly", Author = "J.Roberts", Publisher = "Syncfusion", Price = 200, Id = 2},
+                    new Book{Name = "Java Script Patterns", Author = "S.Stefanov", Publisher = "O'Reilly", Price = 312, Id = 3 },
+                    new Book{Name = "Head First JS Programming", Author = "E.Freeman,E.Robson", Publisher = "O'Reilly", Price = 330, Id = 4 },
+                    new Book{Name = "SQL The Complete Reference", Author = "J.Groff,P.Weinberg,A.Oppel", Publisher = "Williams", Price = 158, Id = 5 },
+                    new Book{Name = "Getting started with ASP.NET 5.0 Web Forms", Author = "N.Gaylord,Ch.Wenz,P.Rastogi,T.Miranda", Publisher = "O'Reilly", Price = 400, Id = 6 },
+                    new Book{Name = "C# 6.0 Complete Guide", Author = "J. & B.Albahairy", Publisher = "Williams", Price = 499, Id = 7 },
+                    new Book{Name = "ASP.NET 4.5 in C# and VB", Author = "J.Gaylord", Publisher = "Wrox", Price = 274, Id = 8 },
+                    new Book{Name = "Head First SQL", Author = "Lynn Beighley", Publisher = "O'Reilly", Price = 299, Id = 9 },
+                    new Book{Name = "Design Patterns via C#", Author = "A.Shevchyk,A.Kasianov,D.Ohrimenko", Publisher = "ITVDN", Price = 830, Id = 10 },
+                    new Book{Name = "OOP in C#. Succinctly", Author = "S.Rossel", Publisher = "Syncfusion", Price = 830, Id = 11}
                 });
 
-                magazineList.AddRange(new List<Magazine> { new Magazine{ Name = "MartialMix", Category = "Sport", Price = 16, Publisher = "Williams"},
-                    new Magazine{Name = "Fashion", Category = "Fashion", Price = 20, Publisher = "MagGroup" },
-                    new Magazine{Name = "Forbs", Category = "Economic", Price = 25, Publisher = "StanleyCo" },
-                    new Magazine{Name = "Geek", Category = "IT", Price = 21, Publisher = "StanleyCo"},
-                    new Magazine{Name = "Amaizing Wild World", Category = "Nature", Price = 22, Publisher = "StanleyCo" },
-                    new Magazine{Name = "Braine Scince", Category = "Psychology", Price = 26, Publisher = "Williams"},
-                    new Magazine{Name = "Car Evo", Category = "Car", Price = 24, Publisher = "MagGroup"},
-                    new Magazine{Name = "Robo", Category = "Scince", Price = 32, Publisher = "StanleyCo"},
-                    new Magazine{Name = "Zadrot", Category = "Games", Price = 16, Publisher = "Williams"},
-                    new Magazine{Name = "Design & Creative", Category = "Design", Price = 30, Publisher = "MagGroup"}
+                magazineList.AddRange(new List<Magazine> { new Magazine{ Name = "MartialMix", Category = "Sport", Price = 16, Publisher = "Williams", Id = 1},
+                    new Magazine{Name = "Fashion", Category = "Fashion", Price = 20, Publisher = "MagGroup",Id = 2},
+                    new Magazine{Name = "Forbs", Category = "Economic", Price = 25, Publisher = "StanleyCo",Id = 3},
+                    new Magazine{Name = "Geek", Category = "IT", Price = 21, Publisher = "StanleyCo",Id = 4},
+                    new Magazine{Name = "Amaizing Wild World", Category = "Nature", Price = 22, Publisher = "StanleyCo",Id = 5},
+                    new Magazine{Name = "Braine Scince", Category = "Psychology", Price = 26, Publisher = "Williams",Id = 6},
+                    new Magazine{Name = "Car Evo", Category = "Car", Price = 24, Publisher = "MagGroup",Id = 7},
+                    new Magazine{Name = "Robo", Category = "Scince", Price = 32, Publisher = "StanleyCo",Id = 8},
+                    new Magazine{Name = "Zadrot", Category = "Games", Price = 16, Publisher = "Williams",Id = 9},
+                    new Magazine{Name = "Design & Creative", Category = "Design", Price = 30, Publisher = "MagGroup",Id = 10}
                 });
 
-                newsPaperList.AddRange(new List<NewsPaper> {new NewsPaper{Name = "The NewYork Times", Category = "News", Price = 7, Publisher = "Williams"},
-                    new NewsPaper{Name = "The WallSteet Jornal", Category = "Economy", Price = 7, Publisher = "Williams"},
-                    new NewsPaper{Name = "Ring", Category = "Sport", Price = 7, Publisher = "Ronald"},
-                    new NewsPaper{Name = "Los Angeles Times", Category = "News", Price = 7, Publisher = "WestCost"},
-                    new NewsPaper{Name = "The Washington Post", Category = "News", Price = 7, Publisher = "Croxy"},
-                    new NewsPaper{Name = "The Times", Category = "News", Price = 1, Publisher = "Croxy"},
-                    new NewsPaper{Name = "The Guardian", Category = "News", Price = 1, Publisher = "WestCost"},
-                    new NewsPaper{Name = "The Daily Telegraph", Category = "News", Price = 1, Publisher = "Croxy"},
-                    new NewsPaper{Name = "Financial Times", Category = "Economy", Price = 1, Publisher = "Williams"},
-                    new NewsPaper{Name = "Le Figaro", Category = "News", Price = 1, Publisher = "WestCost"}
+                newsPaperList.AddRange(new List<NewsPaper> {new NewsPaper{Name = "The NewYork Times", Category = "News", Price = 7, Publisher = "Williams", Id =1},
+                    new NewsPaper{Name = "The WallSteet Jornal", Category = "Economy", Price = 7, Publisher = "Williams", Id = 2},
+                    new NewsPaper{Name = "Ring", Category = "Sport", Price = 7, Publisher = "Ronald", Id = 3},
+                    new NewsPaper{Name = "Los Angeles Times", Category = "News", Price = 7, Publisher = "WestCost", Id = 4},
+                    new NewsPaper{Name = "The Washington Post", Category = "News", Price = 7, Publisher = "Croxy", Id = 5},
+                    new NewsPaper{Name = "The Times", Category = "News", Price = 1, Publisher = "Croxy", Id = 6},
+                    new NewsPaper{Name = "The Guardian", Category = "News", Price = 1, Publisher = "WestCost", Id = 7},
+                    new NewsPaper{Name = "The Daily Telegraph", Category = "News", Price = 1, Publisher = "Croxy", Id = 8},
+                    new NewsPaper{Name = "Financial Times", Category = "Economy", Price = 1, Publisher = "Williams", Id= 9},
+                    new NewsPaper{Name = "Le Figaro", Category = "News", Price = 1, Publisher = "WestCost", Id= 10}
                 });
 
                 indexModel.Books = bookList;
@@ -146,7 +149,6 @@ namespace LibraryProject.Controllers
             return RedirectToAction("Index");
         }
 
-
         public ActionResult GetBooksList()
         {
             IndexModel indexModel = (IndexModel)Session["LibraryState"];
@@ -176,6 +178,234 @@ namespace LibraryProject.Controllers
 
             SaveService.GetXmlList(bookList);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult CreateBook()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateBook(Book book)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            book.Id = indexModel.Books.Count + _AUTOINCREMENT;
+            indexModel.Books.Add(book);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult ShowBook(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            Book book = (from t in indexModel.Books
+                         where t.Id == id
+                         select t).First();
+
+            return View(book);
+        }
+
+        [HttpGet]
+        public ActionResult EditBook(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            Book book = (from t in indexModel.Books
+                         where t.Id == id
+                         select t).First();
+            return View(book);
+        }
+
+        [HttpPost]
+        public ActionResult EditBook(Book newBook)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            foreach (Book book in indexModel.Books)
+            {
+                if (book.Id == newBook.Id)
+                {
+                    book.Name = newBook.Name;
+                    book.Author = newBook.Author;
+                    book.Price = newBook.Price;
+                    book.Publisher = newBook.Publisher;
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteBook(int? id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            Book book = (from t in indexModel.Books
+                         where t.Id == id
+                         select t).First();
+
+            return View(book);
+        }
+
+        [HttpPost, ActionName("DeleteBook")]
+        public ActionResult DeleteConfirmedBook(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            indexModel.Books.Remove(indexModel.Books.Where(m => m.Id == id).First());
+            return RedirectToAction("Index");
+        }
+      
+         [HttpGet]
+        public ActionResult CreateMagazine()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateMagazine(Magazine magazine)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            magazine.Id = indexModel.Magazines.Count + _AUTOINCREMENT;
+            indexModel.Magazines.Add(magazine);
+            return RedirectToAction("Index");
+        }
+        
+        [HttpGet]
+        public ActionResult ShowMagazine(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            Magazine magazine = (from t in indexModel.Magazines
+                                   where t.Id == id
+                                   select t).First();
+
+            return View(magazine);
+        }
+     
+        [HttpGet]
+        public ActionResult EditMagazine(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            Magazine magazine = (from t in indexModel.Magazines
+                                   where t.Id == id
+                                   select t).First();
+            return View(magazine);
+        }
+        
+        [HttpPost]
+        public ActionResult EditMagazine(Magazine newMagazine)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            foreach (Magazine magazine in indexModel.Magazines)
+            {
+                if (magazine.Id == newMagazine.Id)
+                {
+                    magazine.Name = newMagazine.Name;
+                    magazine.Category = newMagazine.Category;
+                    magazine.Price = newMagazine.Price;
+                    magazine.Publisher = newMagazine.Publisher;
+                }
+            }
+            return RedirectToAction("Index");
+        }
+        
+        [HttpGet]
+        public ActionResult DeleteMagazine(int? id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            Magazine newMagazine = (from t in indexModel.Magazines
+                                   where t.Id == id
+                                   select t).First();
+
+            return View(newMagazine);
+        }
+
+        [HttpPost, ActionName("DeleteMagazine")]
+        public ActionResult DeleteConfirmedMagazine(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            indexModel.Magazines.Remove(indexModel.Magazines.Where(m => m.Id == id).First());
+            return RedirectToAction("Index");
+        }
+             
+        [HttpGet]
+        public ActionResult CreateNewspaper()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateNewspaper(NewsPaper newsPaper)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            newsPaper.Id = indexModel.NewsPapers.Count + _AUTOINCREMENT;
+            indexModel.NewsPapers.Add(newsPaper);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult ShowNewspaper(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            NewsPaper newspaper = (from t in indexModel.NewsPapers
+                                   where t.Id == id
+                                   select t).First();
+
+            return View(newspaper);
+        }
+
+        [HttpGet]
+        public ActionResult EditNewspaper(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            NewsPaper newspaper = (from t in indexModel.NewsPapers
+                                   where t.Id == id
+                                   select t).First();
+            return View(newspaper);
+        }
+
+        [HttpPost]
+        public ActionResult EditNewspaper(NewsPaper newNewspaper)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            foreach (NewsPaper newspaper in indexModel.NewsPapers)
+            {
+                if (newspaper.Id == newNewspaper.Id)
+                {
+                    newspaper.Name = newNewspaper.Name;
+                    newspaper.Category = newNewspaper.Category;
+                    newspaper.Price = newNewspaper.Price;
+                    newspaper.Publisher = newNewspaper.Publisher;
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteNewspaper(int? id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            NewsPaper newspaper = (from t in indexModel.NewsPapers
+                                   where t.Id == id
+                                   select t).First();
+
+            return View(newspaper);
+        }
+
+        [HttpPost, ActionName("DeleteNewspaper")]
+        public ActionResult DeleteConfirmedNewspaper(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            indexModel.NewsPapers.Remove(indexModel.NewsPapers.Where(m => m.Id == id).First());
             return RedirectToAction("Index");
         }
     }

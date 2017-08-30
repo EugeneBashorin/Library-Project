@@ -150,6 +150,18 @@
     <Content Include="Views\Home\BookPartial.cshtml" />
     <Content Include="Views\Home\MagazinePartial.cshtml" />
     <Content Include="Views\Home\NewsPaperPartial.cshtml" />
+    <Content Include="Views\Home\CreateBook.cshtml" />
+    <Content Include="Views\Home\ShowBook.cshtml" />
+    <Content Include="Views\Home\EditBook.cshtml" />
+    <Content Include="Views\Home\DeleteBook.cshtml" />
+    <Content Include="Views\Home\CreateNewspaper.cshtml" />
+    <Content Include="Views\Home\ShowNewspaper.cshtml" />
+    <Content Include="Views\Home\EditNewspaper.cshtml" />
+    <Content Include="Views\Home\DeleteNewspaper.cshtml" />
+    <Content Include="Views\Home\CreateMagazine.cshtml" />
+    <Content Include="Views\Home\ShowMagazine.cshtml" />
+    <Content Include="Views\Home\EditMagazine.cshtml" />
+    <Content Include="Views\Home\DeleteMagazine.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

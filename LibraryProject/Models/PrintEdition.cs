@@ -8,5 +8,6 @@ namespace LibraryProject.Models
         public string Name { get; set; }
         public int Price { get; set; }
         public string Publisher { get; set; }
+        public int Id { get; set; }
     }
 }
