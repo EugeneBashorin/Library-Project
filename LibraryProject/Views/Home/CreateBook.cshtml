@@ -17,9 +17,9 @@
     @Html.EditorFor(model => model.Publisher)<br />
     @Html.LabelFor(model => model.Price)<br />
     @Html.EditorFor(model => model.Price)<br />
-    <input type="submit" value="Add">
+    <input type="submit" class="button" value="Add">
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index","Home", new { }, new { @class = "button"})
 </div>

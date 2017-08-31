@@ -246,7 +246,7 @@ namespace LibraryProject.Controllers
                          where t.Id == id
                          select t).First();
 
-            return View(book);
+            return PartialView(book);
         }
 
         [HttpPost, ActionName("DeleteBook")]
@@ -256,8 +256,8 @@ namespace LibraryProject.Controllers
             indexModel.Books.Remove(indexModel.Books.Where(m => m.Id == id).First());
             return RedirectToAction("Index");
         }
-      
-         [HttpGet]
+
+        [HttpGet]
         public ActionResult CreateMagazine()
         {
             return View();
@@ -272,30 +272,30 @@ namespace LibraryProject.Controllers
             indexModel.Magazines.Add(magazine);
             return RedirectToAction("Index");
         }
-        
+
         [HttpGet]
         public ActionResult ShowMagazine(int id)
         {
             IndexModel indexModel = (IndexModel)Session["LibraryState"];
 
             Magazine magazine = (from t in indexModel.Magazines
-                                   where t.Id == id
-                                   select t).First();
+                                 where t.Id == id
+                                 select t).First();
 
             return View(magazine);
         }
-     
+
         [HttpGet]
         public ActionResult EditMagazine(int id)
         {
             IndexModel indexModel = (IndexModel)Session["LibraryState"];
 
             Magazine magazine = (from t in indexModel.Magazines
-                                   where t.Id == id
-                                   select t).First();
+                                 where t.Id == id
+                                 select t).First();
             return View(magazine);
         }
-        
+
         [HttpPost]
         public ActionResult EditMagazine(Magazine newMagazine)
         {
@@ -313,16 +313,16 @@ namespace LibraryProject.Controllers
             }
             return RedirectToAction("Index");
         }
-        
+
         [HttpGet]
         public ActionResult DeleteMagazine(int? id)
         {
             IndexModel indexModel = (IndexModel)Session["LibraryState"];
             Magazine newMagazine = (from t in indexModel.Magazines
-                                   where t.Id == id
-                                   select t).First();
+                                    where t.Id == id
+                                    select t).First();
 
-            return View(newMagazine);
+            return PartialView(newMagazine);
         }
 
         [HttpPost, ActionName("DeleteMagazine")]
@@ -332,7 +332,7 @@ namespace LibraryProject.Controllers
             indexModel.Magazines.Remove(indexModel.Magazines.Where(m => m.Id == id).First());
             return RedirectToAction("Index");
         }
-             
+
         [HttpGet]
         public ActionResult CreateNewspaper()
         {
@@ -398,7 +398,7 @@ namespace LibraryProject.Controllers
                                    where t.Id == id
                                    select t).First();
 
-            return View(newspaper);
+            return PartialView(newspaper);
         }
 
         [HttpPost, ActionName("DeleteNewspaper")]

@@ -37,7 +37,7 @@
             <td align="left">
                 @Html.ActionLink("Edit newspaper", "EditNewspaper", new { id = item.Id })
                 @Html.ActionLink("Show", "ShowNewspaper", new { id = item.Id })
-                @Html.ActionLink("Delete", "DeleteNewspaper", new { id = item.Id })
+                @Html.ActionLink("Delete", "DeleteNewspaper","Home", new { id = item.Id }, new { @class = "viewDialog", data_dialog_title = "Model delete" })
             </td>
         </tr>
     }
@@ -48,7 +48,7 @@
     </tr>
 </table>
 <p>
-    @Html.ActionLink("Create New", "CreateNewspaper")
+    @Html.ActionLink("Create New", "CreateNewspaper", "Home", new { }, new { @class = "button" })
 </p>
 
 <div>
