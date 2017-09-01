@@ -7,18 +7,18 @@ using System.Xml.Serialization;
 
 namespace LibraryProject.Extention_Classes
 {
-    public static class NewsPaperExtention
+    public static class MagazineExtention
     {
-        private static string writePath = AppDomain.CurrentDomain.BaseDirectory + @"App_Data/newspapers.txt";
-        private static string writeXmlPath = AppDomain.CurrentDomain.BaseDirectory + @"App_Data/newspapers.xml";
+        private static string writePath = AppDomain.CurrentDomain.BaseDirectory + @"App_Data/magazines.txt";
+        private static string writeXmlPath = AppDomain.CurrentDomain.BaseDirectory + @"App_Data/magazines.xml";
 
-        public static void GetTxtList(this List<NewsPaper> list)
+        public static void GetTxtList(this List<Magazine> list)
         {
             StringBuilder result = new StringBuilder(130);
 
             if (list.Count > 0)
             {
-                foreach (NewsPaper item in list)
+                foreach (Magazine item in list)
                 {
                     result.AppendLine($"Name: {item.Name} Author: {item.Category} Publisher: {item.Publisher} Price: {item.Price.ToString()}");
                 }
@@ -30,14 +30,14 @@ namespace LibraryProject.Extention_Classes
             }
         }
 
-        public static void GetXmlList(this List<NewsPaper> xmlNewspapersList)
+        public static void GetXmlList(this List<Magazine> xmlMagazinesList)
         {
-            XmlSerializer xs = new XmlSerializer(typeof(List<NewsPaper>));
+            XmlSerializer xs = new XmlSerializer(typeof(List<Magazine>));
 
             using (FileStream fs = new FileStream(writeXmlPath, FileMode.Create))
             {
-                xs.Serialize(fs, xmlNewspapersList);
+                xs.Serialize(fs, xmlMagazinesList);
             }
-        }     
+        }
     }
 }

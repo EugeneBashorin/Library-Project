@@ -1,6 +1,5 @@
 ﻿using LibraryProject.Extention_Classes;
 using LibraryProject.Models;
-using LibraryProject.Service;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -153,10 +152,7 @@ namespace LibraryProject.Controllers
         {
             IndexModel indexModel = (IndexModel)Session["LibraryState"];
             List<Book> bookList = indexModel.Books;
-
-            string listOfBooks = bookList.GetListToString();
-            SaveService.GetTxtList(listOfBooks);
-
+            bookList.GetTxtList();
             return RedirectToAction("Index");
         }
 
@@ -164,20 +160,39 @@ namespace LibraryProject.Controllers
         {
             IndexModel indexModel = (IndexModel)Session["LibraryState"];
             List<NewsPaper> newsPaperList = indexModel.NewsPapers;
-
-            string listOfNewsPapers = newsPaperList.GetListToString();
-            SaveService.GetTxtList(listOfNewsPapers);
-
+            newsPaperList.GetTxtList();
             return RedirectToAction("Index");
         }
 
-        public ActionResult GetBookXmlList()
+        public ActionResult GetMagazinesList()
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            List<Magazine> MagazinesList = indexModel.Magazines;
+            MagazinesList.GetTxtList();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult GetBooksXmlList()
         {
             IndexModel indexModel = (IndexModel)Session["LibraryState"];
             List<Book> bookList = indexModel.Books;
+            bookList.GetXmlList();
+            return RedirectToAction("Index");
+        }
 
-            SaveService.GetXmlList(bookList);
+        public ActionResult GetNewspapersXmlList()
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            List<NewsPaper> newspaperList = indexModel.NewsPapers;
+            newspaperList.GetXmlList();
+            return RedirectToAction("Index");
+        }
 
+        public ActionResult GetMagazinesXmlList()
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            List<Magazine> magazineList = indexModel.Magazines;
+            magazineList.GetXmlList();
             return RedirectToAction("Index");
         }
 
