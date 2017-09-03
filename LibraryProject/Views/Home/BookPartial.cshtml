@@ -39,7 +39,8 @@
             <td align="left">
                 @Html.ActionLink("Edit book","EditBook", new { id = item.Id })
                 @Html.ActionLink("Show", "ShowBook", new { id = item.Id })
-                @Html.ActionLink("Delete", "DeleteBook", "Home", new { id = item.Id }, new { @class = "viewDialog", data_dialog_title = "Model delete"})              
+                @Html.ActionLink("Delete", "DeleteBook", "Home", new { id = item.Id }, new { @class = "viewDialog", data_dialog_title = "Model delete"})
+                @Html.ActionLink("Save to DB", "SaveBookToDB", new { id = item.Id })              
             </td>
         </tr>
     }

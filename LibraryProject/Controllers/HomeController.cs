@@ -28,15 +28,15 @@ namespace LibraryProject.Controllers
                 magazineList = new List<Magazine>();
                 newsPaperList = new List<NewsPaper>();
 
-                bookList.AddRange(new List<Book> { new Book { Name = "Head First C#", Author = "A.Stellman,J.Greene", Publisher = "O'Reilly", Price = 540, Id = 1 },
+                bookList.AddRange(new List<Book> { new Book { Name = "Head First C#", Author = "A.Stellman,J.Greene", Publisher = "OReilly", Price = 540, Id = 1 },
                     new Book{Name = "LINQ Succinctly", Author = "J.Roberts", Publisher = "Syncfusion", Price = 200, Id = 2},
-                    new Book{Name = "Java Script Patterns", Author = "S.Stefanov", Publisher = "O'Reilly", Price = 312, Id = 3 },
-                    new Book{Name = "Head First JS Programming", Author = "E.Freeman,E.Robson", Publisher = "O'Reilly", Price = 330, Id = 4 },
+                    new Book{Name = "Java Script Patterns", Author = "S.Stefanov", Publisher = "OReilly", Price = 312, Id = 3 },
+                    new Book{Name = "Head First JS Programming", Author = "E.Freeman,E.Robson", Publisher = "OReilly", Price = 330, Id = 4 },
                     new Book{Name = "SQL The Complete Reference", Author = "J.Groff,P.Weinberg,A.Oppel", Publisher = "Williams", Price = 158, Id = 5 },
-                    new Book{Name = "Getting started with ASP.NET 5.0 Web Forms", Author = "N.Gaylord,Ch.Wenz,P.Rastogi,T.Miranda", Publisher = "O'Reilly", Price = 400, Id = 6 },
+                    new Book{Name = "Getting started with ASP.NET 5.0 Web Forms", Author = "N.Gaylord,Ch.Wenz,P.Rastogi,T.Miranda", Publisher = "OReilly", Price = 400, Id = 6 },
                     new Book{Name = "C# 6.0 Complete Guide", Author = "J. & B.Albahairy", Publisher = "Williams", Price = 499, Id = 7 },
                     new Book{Name = "ASP.NET 4.5 in C# and VB", Author = "J.Gaylord", Publisher = "Wrox", Price = 274, Id = 8 },
-                    new Book{Name = "Head First SQL", Author = "Lynn Beighley", Publisher = "O'Reilly", Price = 299, Id = 9 },
+                    new Book{Name = "Head First SQL", Author = "Lynn Beighley", Publisher = "OReilly", Price = 299, Id = 9 },
                     new Book{Name = "Design Patterns via C#", Author = "A.Shevchyk,A.Kasianov,D.Ohrimenko", Publisher = "ITVDN", Price = 830, Id = 10 },
                     new Book{Name = "OOP in C#. Succinctly", Author = "S.Rossel", Publisher = "Syncfusion", Price = 830, Id = 11}
                 });
@@ -271,6 +271,21 @@ namespace LibraryProject.Controllers
             indexModel.Books.Remove(indexModel.Books.Where(m => m.Id == id).First());
             return RedirectToAction("Index");
         }
+
+        
+        [HttpGet]
+        public ActionResult SaveBookToDB(int id)
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+
+            Book book = (from t in indexModel.Books
+                         where t.Id == id
+                         select t).First();
+            SaveBooksToDB saveBook = new SaveBooksToDB();
+            saveBook.SetBookToDb(book.Id,book.Name,book.Author,book.Publisher,book.Price);
+            return RedirectToAction("Index");
+        }
+        
 
         [HttpGet]
         public ActionResult CreateMagazine()
