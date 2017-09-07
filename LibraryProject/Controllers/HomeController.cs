@@ -274,18 +274,26 @@ namespace LibraryProject.Controllers
 
         
         [HttpGet]
-        public ActionResult SaveBookToDB(int id)
+        public ActionResult SaveItemBookToDB(int id)
         {
             IndexModel indexModel = (IndexModel)Session["LibraryState"];
 
             Book book = (from t in indexModel.Books
                          where t.Id == id
                          select t).First();
-            SaveBooksToDB saveBook = new SaveBooksToDB();
-            saveBook.SetBookToDb(book.Id,book.Name,book.Author,book.Publisher,book.Price);
+            SaveBooksToDB saveBook = new SaveBooksToDB();//**********************************
+            saveBook.SetBookToDb(book);
             return RedirectToAction("Index");
         }
-        
+
+        public ActionResult GetDatabaseList()
+        {
+            IndexModel indexModel = (IndexModel)Session["LibraryState"];
+            List<Book> bookList = indexModel.Books;
+            SaveBooksToDB saveBooksList = new SaveBooksToDB();//***********************************
+            saveBooksList.SetBooksListToDb(bookList);
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public ActionResult CreateMagazine()

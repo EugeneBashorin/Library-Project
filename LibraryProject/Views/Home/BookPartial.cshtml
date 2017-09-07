@@ -37,10 +37,10 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td align="left">
-                @Html.ActionLink("Edit book","EditBook", new { id = item.Id })
-                @Html.ActionLink("Show", "ShowBook", new { id = item.Id })
+                @Html.ActionLink("Edit book","EditBook", "Home", new { id = item.Id })
+                @Html.ActionLink("Show", "ShowBook", "Home", new { id = item.Id })
                 @Html.ActionLink("Delete", "DeleteBook", "Home", new { id = item.Id }, new { @class = "viewDialog", data_dialog_title = "Model delete"})
-                @Html.ActionLink("Save to DB", "SaveBookToDB", new { id = item.Id })              
+                @Html.ActionLink("Save to DB", "SaveItemBookToDB", "Home", new { id = item.Id })              
             </td>
         </tr>
     }
@@ -48,6 +48,7 @@
         <td align="left">
             @Html.ActionLink("Save txt list", "GetBooksList", new { }, new { @class = "button button-saver" })
             @Html.ActionLink("Save xml list", "GetBooksXmlList", new { }, new { @class = "button button-saver" })
+            @Html.ActionLink("Save list to Data Base", "GetDatabaseList", new { }, new { @class = "button button-saver" })
         </td>
     </tr>
 </table>
